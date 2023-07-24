@@ -1,0 +1,22 @@
+version: "3"
+services:
+  k8-crud-app:
+    image: k8-crud-app
+    restart: always
+    build: .
+    ports:
+      - 8080:8080
+    environment: 
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: student_db
+      MYSQL_ROOT_PASSWORD: root
+      
